@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
-import ErrorIcon from '@material-ui/icons/Error';
+import ErrorIcon from "@material-ui/icons/Error";
 import Card from "@material-ui/core/Card";
 import { Redirect } from "react-router-dom";
 
@@ -11,7 +11,13 @@ import LoginForm from "../login-form";
 import "./login.css";
 
 const Login = props => {
-  const { registrationStatus, updateRegistrationStatus, loginUser, loginStatus, loginError } = props;
+  const {
+    registrationStatus,
+    updateRegistrationStatus,
+    loginUser,
+    loginStatus,
+    loginError
+  } = props;
 
   return (
     <div className="center-container">
@@ -35,18 +41,18 @@ const Login = props => {
           loginUser={loginUser}
         />
       </Container>
-      {
-        loginStatus ? <Redirect to="/dashboard" /> : null
-      }
+      {loginStatus ? <Redirect to="/dashboard" /> : null}
     </div>
   );
 };
 
-const mapStateToProps = ({ authReducer: { users, registrationStatus, loginStatus, loginError } }) => ({
+const mapStateToProps = ({
+  authReducer: { users, registrationStatus, loginStatus, loginError }
+}) => ({
   users,
   registrationStatus,
   loginStatus,
-  loginError,  
+  loginError
 });
 
 const mapDispatchToProps = { updateRegistrationStatus, loginUser };

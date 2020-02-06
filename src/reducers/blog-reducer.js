@@ -1,10 +1,13 @@
 const initState = {
-  posts: localStorage.getItem('usersPosts') !== undefined && localStorage.getItem('usersPosts') !== null ? JSON.parse(localStorage.getItem('usersPosts')) : [],
+  posts:
+    localStorage.getItem("usersPosts") !== undefined &&
+    localStorage.getItem("usersPosts") !== null
+      ? JSON.parse(localStorage.getItem("usersPosts"))
+      : [],
   publishStatus: false
 };
 
 const createPost = (state, action) => {
- 
   const dateObj = new Date();
 
   const month = dateObj.getUTCMonth() + 1;
@@ -12,7 +15,7 @@ const createPost = (state, action) => {
   const year = dateObj.getUTCFullYear();
 
   const newDate = day + "/" + month + "/" + year;
-  
+
   const newPost = action.payload;
   newPost.date = newDate;
   newPost.id = Date.now();
@@ -20,10 +23,9 @@ const createPost = (state, action) => {
   return {
     ...state,
     publishStatus: true,
-    posts: [newPost, ...state.posts ]
+    posts: [newPost, ...state.posts]
   };
 };
-
 
 const blogReducer = (state = initState, action) => {
   switch (action.type) {
@@ -32,12 +34,11 @@ const blogReducer = (state = initState, action) => {
     case "RESET_PUBLISH_STATUS":
       return {
         ...state,
-        publishStatus:false
-      }
+        publishStatus: false
+      };
     default:
       return state;
   }
 };
-
 
 export default blogReducer;

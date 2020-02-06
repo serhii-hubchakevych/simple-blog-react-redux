@@ -1,5 +1,9 @@
 const initState = {
-  users: localStorage.getItem('registeredUsers') !== undefined && localStorage.getItem('registeredUsers') !== null ? JSON.parse(localStorage.getItem('registeredUsers')) : [],
+  users:
+    localStorage.getItem("registeredUsers") !== undefined &&
+    localStorage.getItem("registeredUsers") !== null
+      ? JSON.parse(localStorage.getItem("registeredUsers"))
+      : [],
   registrationStatus: false,
   currentLoginedUser: [],
   loginStatus: false,
@@ -49,7 +53,6 @@ const loginUser = (state, action) => {
   }
 };
 
-
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case "REGISTRATION_USER":
@@ -74,6 +77,5 @@ const authReducer = (state = initState, action) => {
       return state;
   }
 };
-
 
 export default authReducer;

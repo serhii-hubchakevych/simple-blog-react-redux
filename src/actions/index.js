@@ -1,48 +1,48 @@
-const registrationUser = (formData) => {
-    return {
-        type: 'REGISTRATION_USER',
-        payload: formData
-    };
+const registrationUser = formData => {
+  return {
+    type: "REGISTRATION_USER",
+    payload: formData
+  };
 };
 
 const updateRegistrationStatus = () => {
-    return {
-        type: 'UPDATE_REGISTRATION_STATUS',
-    };
+  return {
+    type: "UPDATE_REGISTRATION_STATUS"
+  };
 };
 
-const loginUser = (formData) => {
-    return {
-        type: 'LOGIN_USER',
-        payload: formData
-    };
+const loginUser = formData => {
+  return {
+    type: "LOGIN_USER",
+    payload: formData
+  };
 };
 
 const logoutUser = () => {
-    return {
-        type: 'LOGOUT_USER',
-    };
+  return {
+    type: "LOGOUT_USER"
+  };
 };
 
 const createPost = (formData, username) => {
-    formData.user = username.firstname;
-    return {
-        type: 'CREATE_POST',
-        payload: formData
-    };
+  formData.user = username.firstname;
+  return {
+    type: "CREATE_POST",
+    payload: formData
+  };
 };
 
 const resetPublishStatus = () => {
-    return {
-        type: 'RESET_PUBLISH_STATUS',
-    };
+  return {
+    type: "RESET_PUBLISH_STATUS"
+  };
 };
 
-export { 
-    registrationUser,
-    updateRegistrationStatus,
-    loginUser,
-    logoutUser,
-    createPost,
-    resetPublishStatus
+export {
+  registrationUser,
+  updateRegistrationStatus,
+  loginUser,
+  logoutUser,
+  createPost,
+  resetPublishStatus
 };

@@ -1,13 +1,9 @@
 import React from "react";
 
-import Registration from '../registration'
+import Registration from "../registration";
 
 const RegisterPage = () => {
-
-    return (
-        <Registration />
-    )
-}; 
-
+  return <Registration />;
+};
 
 export default RegisterPage;
