@@ -1,34 +1,9 @@
 const initState = {
-  users: [],
+  users: localStorage.getItem('registeredUsers') !== undefined && localStorage.getItem('registeredUsers') !== null ? JSON.parse(localStorage.getItem('registeredUsers')) : [],
   registrationStatus: false,
   currentLoginedUser: [],
   loginStatus: false,
   loginError: false
-};
-
-const authReducer = (state = initState, action) => {
-  switch (action.type) {
-    case "REGISTRATION_USER":
-      return registerUser(state, action);
-    case "LOGIN_USER":
-      return loginUser(state, action);
-    case "UPDATE_REGISTRATION_STATUS":
-      return {
-        ...state,
-        loginError: false,
-        registrationStatus: false
-      };
-    case "LOGOUT_USER":
-      return {
-        ...state,
-        loginError: false,
-        loginStatus: false,
-        registrationStatus: false,
-        currentLoginedUser: []
-      };
-    default:
-      return state;
-  }
 };
 
 const registerUser = (state, action) => {
@@ -73,5 +48,32 @@ const loginUser = (state, action) => {
     };
   }
 };
+
+
+const authReducer = (state = initState, action) => {
+  switch (action.type) {
+    case "REGISTRATION_USER":
+      return registerUser(state, action);
+    case "LOGIN_USER":
+      return loginUser(state, action);
+    case "UPDATE_REGISTRATION_STATUS":
+      return {
+        ...state,
+        loginError: false,
+        registrationStatus: false
+      };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        loginError: false,
+        loginStatus: false,
+        registrationStatus: false,
+        currentLoginedUser: []
+      };
+    default:
+      return state;
+  }
+};
+
 
 export default authReducer;

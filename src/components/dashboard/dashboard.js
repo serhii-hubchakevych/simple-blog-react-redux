@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 import Card from "@material-ui/core/Card";
+import { Link } from "react-router-dom";
 
 import { logoutUser, createPost, resetPublishStatus } from "../../actions";
 import DashboardForm from "../dashboard-form";
@@ -31,7 +32,7 @@ const Dashboard = props => {
     <React.Fragment>
       <AppBar position="static">
         <Toolbar className="align-items">
-          <Typography variant="h6">Dashboard</Typography>
+          <Typography variant="h6"><Link to="/" className="home-link">Dashboard</Link></Typography>
           <Button color="inherit" onClick={() => logoutUser()}>
             Logout
           </Button>
