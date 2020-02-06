@@ -1,0 +1,10 @@
+
+
+.right-align{
+    margin-left: auto !important;
+    padding: 10px;
+}
+
+.right-align a{
+    font-family: monospace;
+}
