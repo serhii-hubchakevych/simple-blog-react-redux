@@ -11,10 +11,8 @@ import BlogItem from "../blog-item";
 import "./blog.css";
 
 const Blog = props => {
-
   const { posts } = props;
 
-  console.log(posts);
   return (
     <React.Fragment>
       <AppBar position="static">
@@ -26,19 +24,23 @@ const Blog = props => {
         </Toolbar>
       </AppBar>
       <Container maxWidth="md" className="mrg-container">
-        <Grid container spacing={6}>
-          {posts.map(item => {
-            return (
-              <BlogItem
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                user={item.user}
-                date={item.date}
-              />
-            );
-          })}
-        </Grid>
+        {posts.length > 0 ? (
+          <Grid container spacing={6}>
+            {posts.map(item => {
+              return (
+                <BlogItem
+                  key={item.id}
+                  title={item.title}
+                  description={item.description}
+                  user={item.user}
+                  date={item.date}
+                />
+              );
+            })}
+          </Grid>
+        ) : (
+          <p className="noth-to-show">Register and create your first post</p>
+        )}
       </Container>
     </React.Fragment>
   );

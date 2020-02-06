@@ -10,3 +10,10 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.noth-to-show{
+    font-size: 40px;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 40%;
+}

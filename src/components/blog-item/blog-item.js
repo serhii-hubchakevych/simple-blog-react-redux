@@ -4,6 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
+import './blog-item.css'
+
 const BlogItem = props => {
 
   const {title, description, user, date} = props;
@@ -13,11 +15,11 @@ const BlogItem = props => {
       <Grid item xs={12} sm={6} md={6}>
         <Card variant="outlined">
           <CardContent>
-            <Typography variant="h5" color="textSecondary" gutterBottom>
+            <Typography className="post-title" variant="h5" color="textSecondary" gutterBottom>
               {title}
             </Typography>
-            <Typography color="textSecondary">{user}</Typography>
-            <Typography color="textSecondary">{date}</Typography>
+            <Typography color="textSecondary" gutterBottom>{user}</Typography>
+            <Typography color="textSecondary" gutterBottom>{date}</Typography>
             <Typography variant="body2" component="p">
               {description}
             </Typography>
