@@ -18,8 +18,15 @@ const loginUser = (formData) => {
     };
 };
 
+const logoutUser = () => {
+    return {
+        type: 'LOGOUT_USER',
+    };
+};
+
 export { 
     registrationUser,
     updateRegistrationStatus,
-    loginUser
+    loginUser,
+    logoutUser
 };

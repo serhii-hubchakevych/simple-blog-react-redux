@@ -13,8 +13,6 @@ import "./login.css";
 const Login = props => {
   const { registrationStatus, updateRegistrationStatus, loginUser, loginStatus, loginError } = props;
 
-  console.log('LOGIN STATUS', loginStatus)
-
   return (
     <div className="center-container">
       <Container maxWidth="xs">
@@ -48,8 +46,7 @@ const mapStateToProps = ({ blogReducer: { users, registrationStatus, loginStatus
   users,
   registrationStatus,
   loginStatus,
-  loginError
-  
+  loginError,  
 });
 
 const mapDispatchToProps = { updateRegistrationStatus, loginUser };

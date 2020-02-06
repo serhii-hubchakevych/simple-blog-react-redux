@@ -18,6 +18,14 @@ const blogReducer = (state = initState, action) => {
         loginError: false,
         registrationStatus: false
       };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        loginError: false,
+        loginStatus: false,
+        registrationStatus: false,
+        currentLoginedUser: []
+      };
     default:
       return state;
   }
@@ -55,6 +63,7 @@ const loginUser = (state, action) => {
       ...state,
       loginError: false,
       loginStatus: true,
+      registrationStatus: false,
       currentLoginedUser: loginCandidate
     };
   } else {
