@@ -32,7 +32,11 @@ const Dashboard = props => {
     <React.Fragment>
       <AppBar position="static">
         <Toolbar className="align-items">
-          <Typography variant="h6"><Link to="/" className="home-link">Dashboard</Link></Typography>
+          <Typography variant="h6">
+            <Link to="/" className="home-link">
+              Dashboard
+            </Link>
+          </Typography>
           <Button color="inherit" onClick={() => logoutUser()}>
             Logout
           </Button>
@@ -41,9 +45,14 @@ const Dashboard = props => {
       <div className="center-container">
         <Container maxWidth="xs">
           {publishStatus ? (
-            <Card className="post-created-card">
-              <DoneAllIcon style={{ color: "green", marginRight: 10 }} />
-              Post created!
+            <Card className="container-card">
+              <div className="post-created-card">
+                <DoneAllIcon style={{ color: "green", marginRight: 10 }} />
+                Post created! Want to see your post?
+              </div>
+              <Link to="/" onClick={() => resetPublishStatus()}>
+                YES
+              </Link>
             </Card>
           ) : null}
           <DashboardForm

@@ -91,15 +91,33 @@ const validate = values => {
   const errors = {};
   if (!values.firstname) {
     errors.firstname = "Name field is required!";
+  } else if (values.firstname.length < 2 ){
+    errors.firstname = "Name length must be higher then 1!";
+  } else if (values.firstname.length > 15){
+    errors.firstname = "Name length must be less then 15!";
+  } else if (/[^A-Za-z]+/.test(values.firstname)){
+    errors.firstname = "Name must be a string value!";
   }
   if (!values.lastname) {
     errors.lastname = "Surname field is required!";
+  } else if (values.lastname.length < 2 ){
+    errors.lastname = "Surname length must be higher then 1!";
+  } else if (values.lastname.length > 15){
+    errors.lastname = "Surname length must be less then 15!";
+  } else if (/[^A-Za-z]+/.test(values.lastname)){
+    errors.lastname = "Surname must be a string value!";
   }
   if (!values.email) {
     errors.email = "Email field is required!";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+    errors.email = "Email field is not valid!";
   }
   if (!values.password) {
     errors.password = "Password field is required";
+  } else if (values.password.length < 6 ){
+    errors.password = "Password length must be higher then 6!";
+  } else if (values.password.length > 15){
+    errors.password = "Password length must be less then 15!";
   }
   return errors;
 };

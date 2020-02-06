@@ -1,12 +1,8 @@
 const initState = {
-  users:
-    localStorage.getItem("registeredUsers") !== undefined &&
-    localStorage.getItem("registeredUsers") !== null
-      ? JSON.parse(localStorage.getItem("registeredUsers"))
-      : [],
+  users: localStorage.getItem("registeredUsers") !== undefined && localStorage.getItem("registeredUsers") !== null ? JSON.parse(localStorage.getItem("registeredUsers")) : [],
   registrationStatus: false,
-  currentLoginedUser: [],
-  loginStatus: false,
+  currentLoginedUser: localStorage.getItem("currentLoginedUser") !== undefined && localStorage.getItem("currentLoginedUser") !== null ? JSON.parse(localStorage.getItem("currentLoginedUser")) : [],
+  loginStatus: localStorage.getItem("loginStatus") !== undefined && localStorage.getItem("loginStatus") !== null ? JSON.parse(localStorage.getItem("loginStatus")) : false,
   loginError: false
 };
 

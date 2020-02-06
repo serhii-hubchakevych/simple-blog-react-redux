@@ -1,12 +1,11 @@
-.align-items{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.align-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.post-created-card{
-    margin-bottom: 40px;
-    height: 50px;
+.post-created-card {
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,9 +13,30 @@
   font-size: 20px;
 }
 
-.home-link{
+.home-link {
   color: white;
-    text-decoration: none;
-    font-family: monospace;
-    font-size: 20px;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.container-card {
+  /* height: 50px; */
+  align-items: center;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 40px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container-card a {
+  text-decoration: none;
+  font-size: 20px;
+  font-family: monospace;
+  color: green;
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 5px;
 }

@@ -27,7 +27,7 @@ const LoginForm = props => {
   const { handleSubmit, updateRegistrationStatus, loginUser } = props;
 
   return (
-    <form noValidate onSubmit={handleSubmit( formData => loginUser(formData))}>
+    <form noValidate onSubmit={handleSubmit(formData => loginUser(formData))}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Field
@@ -67,10 +67,16 @@ const LoginForm = props => {
 const validate = values => {
   const errors = {};
   if (!values.login) {
-    errors.login = "Login field is required!";
+    errors.login = "Email field is required!";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.login)){
+    errors.login = "Email field is not valid!";
   }
   if (!values.password) {
-    errors.password = "Password field is required!";
+    errors.password = "Password field is required";
+  } else if (values.password.length < 6 ){
+    errors.password = "Password length must be higher then 6!";
+  } else if (values.password.length > 15){
+    errors.password = "Password length must be less then 15!";
   }
 
   return errors;

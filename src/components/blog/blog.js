@@ -11,16 +11,22 @@ import BlogItem from "../blog-item";
 import "./blog.css";
 
 const Blog = props => {
-  const { posts } = props;
+  const { posts, loginStatus } = props;
 
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar className="align-items">
           <Typography variant="h6">Pacanskiy blog</Typography>
-          <Link to="/login" className="rdr-link">
-            Login
-          </Link>
+          {loginStatus ? (
+            <Link to="/dashboard" className="rdr-link">
+              Add more posts
+            </Link>
+          ) : (
+            <Link to="/login" className="rdr-link">
+              Login
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
       <Container maxWidth="md" className="mrg-container">
@@ -46,8 +52,12 @@ const Blog = props => {
   );
 };
 
-const mapStateToProps = ({ blogReducer: { posts } }) => ({
-  posts
+const mapStateToProps = ({
+  blogReducer: { posts },
+  authReducer: { loginStatus }
+}) => ({
+  posts,
+  loginStatus
 });
 
 export default connect(mapStateToProps)(Blog);
