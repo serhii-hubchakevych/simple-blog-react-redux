@@ -42,7 +42,7 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = ({ blogReducer: { users, registrationStatus, loginStatus, loginError } }) => ({
+const mapStateToProps = ({ authReducer: { users, registrationStatus, loginStatus, loginError } }) => ({
   users,
   registrationStatus,
   loginStatus,

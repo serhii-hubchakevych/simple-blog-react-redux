@@ -6,26 +6,22 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
+import Card from "@material-ui/core/Card";
 
-import { logoutUser } from '../../actions';
+import { logoutUser, createPost, resetPublishStatus } from "../../actions";
 import DashboardForm from "../dashboard-form";
 import "./dashboard.css";
 
 const Dashboard = props => {
   const {
-    users,
-    registrationStatus,
     loginStatus,
-    loginError,
     currentLoginedUser,
-    logoutUser
+    logoutUser,
+    createPost,
+    publishStatus,
+    resetPublishStatus
   } = props;
-
-  console.log("USERS", users);
-  console.log("registrationStatus", registrationStatus);
-  console.log("loginStatus", loginStatus);
-  console.log("loginError", loginError);
-  console.log("currentLoginedUser", currentLoginedUser);
 
   if (!loginStatus) {
     return <Redirect to="/login" />;
@@ -36,12 +32,24 @@ const Dashboard = props => {
       <AppBar position="static">
         <Toolbar className="align-items">
           <Typography variant="h6">Dashboard</Typography>
-          <Button color="inherit" onClick={()=> logoutUser()}>Logout</Button>
+          <Button color="inherit" onClick={() => logoutUser()}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
       <div className="center-container">
         <Container maxWidth="xs">
-          <DashboardForm />
+          {publishStatus ? (
+            <Card className="post-created-card">
+              <DoneAllIcon style={{ color: "green", marginRight: 10 }} />
+              Post created!
+            </Card>
+          ) : null}
+          <DashboardForm
+            createPost={createPost}
+            currentLoginedUser={currentLoginedUser}
+            resetPublishStatus={resetPublishStatus}
+          />
         </Container>
       </div>
     </React.Fragment>
@@ -49,21 +57,14 @@ const Dashboard = props => {
 };
 
 const mapStateToProps = ({
-  blogReducer: {
-    users,
-    registrationStatus,
-    loginStatus,
-    loginError,
-    currentLoginedUser
-  }
+  authReducer: { loginStatus, currentLoginedUser },
+  blogReducer: { publishStatus }
 }) => ({
-  users,
-  registrationStatus,
   loginStatus,
-  loginError,
-  currentLoginedUser
+  currentLoginedUser,
+  publishStatus
 });
 
-const mapDispatchToProps = { logoutUser };
+const mapDispatchToProps = { logoutUser, createPost, resetPublishStatus };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

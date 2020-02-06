@@ -2,33 +2,48 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import { Field, reduxForm } from "redux-form";
+import { reset, Field, reduxForm } from "redux-form";
 
 import "./dashboard-form.css";
 
+const renderField = ({
+  input,
+  label,
+  type,
+  rows,
+  meta: { touched, error }
+}) => (
+  <React.Fragment>
+    <TextField
+      id="outlined-basic"
+      {...input}
+      error={touched && error && true}
+      helperText={touched && error}
+      label={label}
+      type={type}
+      variant="outlined"
+      fullWidth
+      id={input.name}
+      multiline
+      rows={rows}
+    />
+  </React.Fragment>
+);
 
-const renderField = ({ input, label, type, rows, meta: { touched, error } }) => (
-    <React.Fragment>
-      <TextField
-        id="outlined-basic"
-        {...input}
-        error={touched && error && true}
-        helperText={touched && error}
-        label={label}
-        type={type}
-        variant="outlined"
-        fullWidth
-        id={input.name}
-        multiline
-        rows={rows}
-      />
-    </React.Fragment>
-  );
-
-
-const DashboardForm = () => {
+const DashboardForm = props => {
+  const {
+    handleSubmit,
+    createPost,
+    currentLoginedUser,
+    resetPublishStatus
+  } = props;
   return (
-    <form noValidate>
+    <form
+      noValidate
+      onSubmit={handleSubmit(formData => {
+        createPost(formData, currentLoginedUser);
+      })}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Field
@@ -37,6 +52,7 @@ const DashboardForm = () => {
             component={renderField}
             label="Title:"
             rows="2"
+            onFocus={() => resetPublishStatus()}
           />
         </Grid>
         <Grid item xs={12}>
@@ -70,7 +86,10 @@ const validate = values => {
   return errors;
 };
 
+const afterSubmit = (result, dispatch) => dispatch(reset("dashboardForm"));
+
 export default reduxForm({
   form: "dashboardForm",
-  validate
+  validate,
+  onSubmitSuccess: afterSubmit
 })(DashboardForm);

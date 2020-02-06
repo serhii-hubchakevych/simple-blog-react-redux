@@ -26,7 +26,7 @@ const Registration = props => {
   );
 };
 
-const mapStateToProps = ({ blogReducer: { users, registrationStatus } }) =>  ({ users, registrationStatus});
+const mapStateToProps = ({ authReducer: { users, registrationStatus } }) =>  ({ users, registrationStatus});
 
 const mapDispatchToProps = { registrationUser };
 

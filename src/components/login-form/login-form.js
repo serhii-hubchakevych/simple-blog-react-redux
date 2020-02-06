@@ -27,7 +27,7 @@ const LoginForm = props => {
   const { handleSubmit, updateRegistrationStatus, loginUser } = props;
 
   return (
-    <form noValidate  onSubmit={handleSubmit( formData => loginUser(formData))}>
+    <form noValidate onSubmit={handleSubmit( formData => loginUser(formData))}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Field

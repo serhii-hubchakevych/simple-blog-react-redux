@@ -24,9 +24,25 @@ const logoutUser = () => {
     };
 };
 
+const createPost = (formData, username) => {
+    formData.user = username.firstname;
+    return {
+        type: 'CREATE_POST',
+        payload: formData
+    };
+};
+
+const resetPublishStatus = () => {
+    return {
+        type: 'RESET_PUBLISH_STATUS',
+    };
+};
+
 export { 
     registrationUser,
     updateRegistrationStatus,
     loginUser,
-    logoutUser
+    logoutUser,
+    createPost,
+    resetPublishStatus
 };
